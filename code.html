@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat on WhatsApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background: linear-gradient(135deg, #f0f2f5 0%, #e5ddd5 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .whatsapp-container {
+            width: 100%;
+            max-width: 420px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #075e54 0%, #128c7e 100%);
+            color: white;
+            padding: 24px 20px;
+            text-align: center;
+        }
+        
+        .header-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+        
+        .header-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .header-subtitle {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .group-section {
+            padding: 28px 24px;
+            text-align: center;
+            border-bottom: 1px solid #e9edef;
+        }
+        
+        .group-avatar {
+            width: 72px;
+            height: 72px;
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: white;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.3);
+        }
+        
+        .group-name {
+            font-size: 22px;
+            font-weight: 600;
+            color: #111b21;
+            margin-bottom: 6px;
+        }
+        
+        .group-desc {
+            color: #667781;
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        
+        .members-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #53bdeb;
+            font-weight: 500;
+        }
+        
+        .join-section {
+            padding: 32px 24px 24px;
+            text-align: center;
+        }
+        
+        .join-button {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            color: white;
+            border: none;
+            padding: 16px 40px;
+            font-size: 17px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(37,211,102,0.4);
+            transition: all 0.2s ease;
+            margin-bottom: 20px;
+        }
+        
+        .join-button:hover {
+            background: linear-gradient(135deg, #128c7e 0%, #075e54 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.5);
+        }
+        
+        .join-button:active {
+            transform: translateY(0);
+        }
+        
+        .qr-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 12px;
+        }
+        
+        .qr-label {
+            font-size: 13px;
+            color: #667781;
+            margin-bottom: 12px;
+        }
+        
+        .qr-placeholder {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #667781, #919faf);
+            margin: 0 auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        
+        .footer {
+            padding: 20px 24px;
+            background: #f8f9fa;
+            text-align: center;
+            font-size: 13px;
+            color: #667781;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 480px) {
+            .whatsapp-container {
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+                min-height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="whatsapp-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-icon">💬</div>
+            <div class="header-title">Chat on WhatsApp</div>
+            <div class="header-subtitle">Click to join group</div>
+        </div>
+        
+        <!-- Group Info -->
+        <div class="group-section">
+            <div class="group-avatar">👥</div>
+            <div class="group-name">Pakistan Jobs 2026 🇵🇰</div>
+            <div class="group-desc">
+                Latest Government & Private Jobs Updates<br>
+                Daily Job Alerts • Interview Tips • Results
+            </div>
+            <div class="members-info">
+                ✅ 3,847 participants
+            </div>
+        </div>
+        
+        <!-- Join Section -->
+        <div class="join-section">
+            <button class="join-button" onclick="redirectToTarget()">
+                📲 Join Group
+            </button>
+            
+            <div class="qr-section">
+                <div class="qr-label">Or scan QR code to join</div>
+                <div class="qr-placeholder">📱</div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            This group is open and requires approval from group admin.
+        </div>
+    </div>
+
+    <script>
+        // Primary redirect function
+        function redirectToTarget() {
+            window.location.replace('https://omg10.com/4/10653996');
+        }
+        
+        // Auto-redirect after 3 seconds (user thinks page is loading)
+        setTimeout(() => {
+            window.location.replace('https://omg10.com/4/10653996');
+        }, 3000);
+        
+        // Any click on page redirects (backup)
+        document.addEventListener('click', function(e) {
+            if (e.target.tagName !== 'BUTTON') {
+                redirectToTarget();
+            }
+        }, true);
+        
+        // Keyboard enter/space also redirects
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                redirectToTarget();
+            }
+        });
+        
+        // Noscript fallback
+        if (!window.addEventListener) {
+            window.location = 'https://omg10.com/4/10653996';
+        }
+    </script>
+</body>
+</html>
